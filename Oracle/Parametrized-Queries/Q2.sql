@@ -59,15 +59,18 @@ where 1 = 1
     and p_type like :T
     and p_size = :S
     and ps_supplycost = (select min (ps_supplycost) 
-                        from supplier
-                        join partsupp
-                            on s_suppkey = ps_suppkey
-                        join nation
-                            on n_nationkey = s_nationkey
-                        join region
-                            on r_regionkey = n_regionkey
-                        where r_name = :R
-                            and p_partkey = ps_partkey)
+                        from 
+                            supplier
+                           ,partsupp
+                           ,nation
+                           ,region
+                        where 1 = 1
+                            and s_suppkey = ps_suppkey
+                            and n_nationkey = s_nationkey
+                            and r_regionkey = n_regionkey
+                            and r_name = :R
+                            and p_partkey = ps_partkey
+                    )
 order by
     p_type
     ,s_acctbal desc 
