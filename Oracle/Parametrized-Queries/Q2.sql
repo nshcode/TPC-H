@@ -4,12 +4,12 @@
 
 set serveroutput on;
 
-var R char(15 char);
+var R char(25 char);
 var T varchar2(25 char);
 var S number;
 declare
     type region_names_type is varray(5) 
-        of char(15 char) not null;
+        of char(25 char) not null;
     type lable_names_type is varray(5)
         of varchar2(25 char) not null;
     r_names region_names_type := region_names_type ('AFRICA'
